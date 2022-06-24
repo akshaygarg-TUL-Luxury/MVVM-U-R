@@ -46,7 +46,6 @@ final class DefaultSearchRepoViewModel: SearchRepoViewModel {
     func didSearch(for text: String) {
         analyticsManager.track(event: .didSearchText)
         usecase.getRepositories(for: text) { [weak self] result in
-            DispatchQueue.main.async {
                 switch result {
                 case let .success(searchResult):
                     self?.repositories = searchResult.items
@@ -55,7 +54,6 @@ final class DefaultSearchRepoViewModel: SearchRepoViewModel {
                 case let .failure(error):
                     self?.delegate.showView(for: error)
                 }
-            }
         }
     }
     

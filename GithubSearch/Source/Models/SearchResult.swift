@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct SearchResult: Decodable {
+struct SearchResult: Decodable, Equatable {
     let items: [Repository]
 }
 
-struct Repository: Decodable {
+struct Repository: Decodable, Equatable {
     let id: Int
     let name: String
     let full_name: String

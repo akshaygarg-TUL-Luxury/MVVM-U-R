@@ -67,7 +67,9 @@ extension SearchRepoViewController: UISearchBarDelegate {
 
 extension SearchRepoViewController: SearchRepoOutput {
     func showList(with items: [Repository]) {
-        mainTableView.reloadData()
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
     }
     
     func showView(for error: Error) {
